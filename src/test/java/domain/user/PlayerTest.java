@@ -12,4 +12,12 @@ class PlayerTest {
             new Player("123456", 10000);
         }).hasMessageContaining("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
     }
+
+    @DisplayName("플레이어 이름이 비어 있는 경우, 예외 사항 확인")
+    @Test
+    void emptyPlayerNameTest() {
+        Assertions.assertThatThrownBy(() -> {
+            new Player("", 10000);
+        }).hasMessageContaining("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
+    }
 }

@@ -4,6 +4,7 @@ import domain.card.Card;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 게임 참여자를 의미하는 객체
@@ -20,7 +21,11 @@ public class Player {
     }
 
     private void validNameLength(String name) {
-        if (name.length() >= 6) {
+        if (Objects.isNull(name) || name.isEmpty()) {
+            throw new IllegalArgumentException("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
+        }
+
+        if (name.length() < 1 || name.length() > 5) {
             throw new IllegalArgumentException("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
         }
     }
