@@ -16,8 +16,15 @@ public class Player {
 
     public Player(String name, double bettingMoney) {
         validNameLength(name);
+        validBettingCost(bettingMoney);
         this.name = name;
         this.bettingMoney = bettingMoney;
+    }
+
+    private void validBettingCost(double bettingMoney) {
+        if (bettingMoney <= 0) {
+            throw new IllegalArgumentException("베팅 금액은 0원 보다 커야 합니다.");
+        }
     }
 
     private void validNameLength(String name) {

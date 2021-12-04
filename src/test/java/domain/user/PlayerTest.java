@@ -20,4 +20,12 @@ class PlayerTest {
             new Player("", 10000);
         }).hasMessageContaining("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
     }
+
+    @DisplayName("베팅금액이 0원 이하일 경우, 예외 사항 확인")
+    @Test
+    void bettingCostTest() {
+        Assertions.assertThatThrownBy(() -> {
+            new Player("123", 0);
+        }).hasMessageContaining("베팅 금액은 0원 보다 커야 합니다.");
+    }
 }
