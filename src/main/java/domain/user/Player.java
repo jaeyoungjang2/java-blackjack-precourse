@@ -21,7 +21,7 @@ public class Player {
 
     private void validNameLength(String name) {
         if (name.length() >= 6) {
-            throw new IllegalArgumentException("플레이어의 이름은 5자 이하로 구성되어야 합니다.");
+            throw new IllegalArgumentException("플레이어의 이름은 1자 이상 5자 이하로 구성되어야 합니다.");
         }
     }
 
