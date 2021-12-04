@@ -25,5 +25,16 @@ public class Dealer {
         return cards;
     }
 
+    public boolean finish() {
+        int totalScore = 0;
+        for (Card card : cards) {
+            totalScore += card.score();
+        }
+
+        if (totalScore > 16) {
+            return true;
+        }
+        return false;
+    }
     // TODO 추가 기능 구현
 }

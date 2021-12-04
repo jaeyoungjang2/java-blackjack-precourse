@@ -19,6 +19,13 @@ public class BlackJackController {
         getPlayerName();
         playFirstRound();
         printFirstRoundResult();
+        playAdditionalRound();
+    }
+
+    private void playAdditionalRound() {
+        while (players.finish() && dealer.finish()) {
+
+        }
     }
 
     private void printFirstRoundResult() {

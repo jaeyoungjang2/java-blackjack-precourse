@@ -14,6 +14,8 @@ public class Player {
     private final double bettingMoney;
     private final List<Card> cards = new ArrayList<>();
 
+    private String finish = "n";
+
     public Player(String name, double bettingMoney) {
         validNameLength(name);
         validBettingCost(bettingMoney);
@@ -47,6 +49,10 @@ public class Player {
 
     public String name() {
         return name;
+    }
+
+    public String finish() {
+        return finish;
     }
 
     // TODO 추가 기능 구현

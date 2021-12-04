@@ -29,4 +29,9 @@ public class Players {
     public List<Player> players() {
         return players;
     }
+
+    public boolean finish() {
+
+        return players.stream().allMatch(player -> player.finish().equals("y"));
+    }
 }
