@@ -10,4 +10,8 @@ public class Players {
     public Players() {
         this.players = new ArrayList<>();
     }
+
+    public void addPlayer(String player, int bettingCost) {
+        players.add(new Player(player, bettingCost));
+    }
 }
