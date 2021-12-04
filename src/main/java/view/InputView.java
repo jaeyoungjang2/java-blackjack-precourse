@@ -10,5 +10,8 @@ public class InputView {
         return SCANNER.nextLine();
     }
 
-
+    public static int requireBettingCost(String player) {
+        System.out.printf("%s의 베팅 금액은?%n", player);
+        return SCANNER.nextInt();
+    }
 }

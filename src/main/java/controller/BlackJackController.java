@@ -16,6 +16,9 @@ public class BlackJackController {
 
     private void getPlayerName() {
         String playersName = InputView.requirePlayersName();
-
+        String[] players = playersName.split(",");
+        for (String player : players) {
+            InputView.requireBettingCost(player);
+        }
     }
 }
