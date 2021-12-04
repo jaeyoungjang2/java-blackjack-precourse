@@ -17,5 +17,9 @@ public class Dealer {
         cards.add(card);
     }
 
+    public void playFirstTurn(CardMaster cardMaster) {
+        addCard(cardMaster.card());
+    }
+
     // TODO 추가 기능 구현
 }
