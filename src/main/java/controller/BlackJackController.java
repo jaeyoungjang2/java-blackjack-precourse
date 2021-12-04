@@ -23,6 +23,7 @@ public class BlackJackController {
 
     private void printFirstRoundResult() {
         OutputView.printFirstRoundPlayerCardState(players.players());
+        OutputView.printFirstRoundDealerCardState(dealer);
 
     }
 
@@ -31,6 +32,7 @@ public class BlackJackController {
     }
 
     private void playFirstTurn(Players players, Dealer dealer) {
+        OutputView.printFirstTurnInfo(players.players());
         players.playFirstTurn(cardMaster);
         dealer.playFirstTurn(cardMaster);
     }

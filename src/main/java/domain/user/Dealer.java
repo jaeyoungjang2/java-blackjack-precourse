@@ -21,5 +21,9 @@ public class Dealer {
         addCard(cardMaster.card());
     }
 
+    public List<Card> cards() {
+        return cards;
+    }
+
     // TODO 추가 기능 구현
 }
