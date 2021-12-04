@@ -4,6 +4,7 @@ import domain.user.CardMaster;
 import domain.user.Dealer;
 import domain.user.Players;
 import view.InputView;
+import view.OutputView;
 
 public class BlackJackController {
     private Players players;
@@ -17,6 +18,12 @@ public class BlackJackController {
     public void run() {
         getPlayerName();
         playFirstRound();
+        printFirstRoundResult();
+    }
+
+    private void printFirstRoundResult() {
+        OutputView.printFirstRoundPlayerCardState(players.players());
+
     }
 
     private void playFirstRound() {

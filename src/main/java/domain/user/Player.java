@@ -41,6 +41,14 @@ public class Player {
         cards.add(card);
     }
 
+    public List<Card> cards() {
+        return cards;
+    }
+
+    public String name() {
+        return name;
+    }
+
     // TODO 추가 기능 구현
 
 }

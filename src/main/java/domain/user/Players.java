@@ -25,4 +25,8 @@ public class Players {
             player.addCard(cardMaster.card());
         }
     }
+
+    public List<Player> players() {
+        return players;
+    }
 }
