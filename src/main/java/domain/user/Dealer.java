@@ -27,4 +27,12 @@ public class Dealer {
     public String toString() {
         return "딜러";
     }
+
+    public boolean wantMoreCard() {
+        return getTotalScore() <= 16;
+    }
+
+    public Integer getTotalScore() {
+        return cards.stream().map(card -> card.score()).reduce(Integer::sum).orElse(0);
+    }
 }

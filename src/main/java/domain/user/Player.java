@@ -30,6 +30,28 @@ public class Player {
         return cards;
     }
 
-    // TODO 추가 기능 구현
+    public Integer totalScore() {
+        return cards.stream().map(card -> card.score()).reduce(Integer::sum).orElse(0);
+    }
 
+    // TODO 추가 기능 구현
+    public double earnMoney(Integer dealerScore) {
+        if (dealerScore > 21) {
+            return bettingMoney;
+        }
+        if (totalScore() > 21) {
+            return -bettingMoney;
+        }
+        if (totalScore() == dealerScore) {
+            return 0;
+        }
+        if (totalScore() == 21 && dealerScore != 21) {
+            return bettingMoney * 1.5;
+        }
+        if (totalScore() > dealerScore) {
+            return bettingMoney;
+        }
+        return - bettingMoney;
+
+    }
 }

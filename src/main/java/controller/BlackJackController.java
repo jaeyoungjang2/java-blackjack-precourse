@@ -15,38 +15,83 @@ public class BlackJackController {
 
     private List<Player> players = new ArrayList<>();
     private Dealer dealer = new Dealer();
+    private int cardIndex = 0;
+    private List<Card> cards = shuffledCard();
 
     public void run() {
         prepareBlackJack();
         playFirstRound();
+        playAdditionalRound();
+        printResult();
+    }
+
+    private void printResult() {
+        double totalEarnMoney = 0;
+        OutputView.printResultInfo();
+        for (Player player : players) {
+            double playerEarnMoney = player.earnMoney(dealer.getTotalScore());
+            totalEarnMoney += playerEarnMoney;
+        }
+        OutputView.printDealerEarnMoney(-totalEarnMoney);
+
+        for (Player player : players) {
+            double playerEarnMoney = player.earnMoney(dealer.getTotalScore());
+            OutputView.printPlayerEarnMoney(playerEarnMoney, player);
+        }
+    }
+
+    private void playAdditionalRound() {
+        for (Player player: players) {
+            while (true) {
+                String wantMoreCard = InputView.addtionalRoundPlayerAddCard(player);
+                if (wantMoreCard.equals("y")) {
+                    Card card = getShuffledCard(cards);
+                    player.addCard(card);
+                    OutputView.printPlayerCardInfo(player);
+                }
+                if (wantMoreCard.equals("n")) {
+                    break;
+                }
+            }
+        }
+
+        while (dealer.wantMoreCard()) {
+            OutputView.printDealerGetMoreCard();
+            Card card = getShuffledCard(cards);
+            dealer.addCard(card);
+        }
+
+        OutputView.printDealerCardInfo(dealer);
+        for (Player player : players) {
+            OutputView.printPlayerCardInfo(player);
+        }
     }
 
     private void playFirstRound() {
-        List<Card> cards = shuffledCard();
-        int index = 0;
-
         OutputView.printFirstRoundInfo(players);
 
-        Card card = cards.get(index);
-        index ++;
+        Card card = getShuffledCard(cards);
         dealer.addCard(card);
-        card = cards.get(index);
-        index ++;
+        card = getShuffledCard(cards);
         dealer.addCard(card);
         OutputView.printFirstRoundDealerCardInfo(dealer);
 
         for (Player player : players) {
-            card = cards.get(index);
-            index ++;
+            card = getShuffledCard(cards);
             player.addCard(card);
-            card = cards.get(index);
-            index ++;
+            card = getShuffledCard(cards);
             player.addCard(card);
 
-            OutputView.printFirstRoundPlayerCardInfo(player);
+            OutputView.printPlayerCardInfo(player);
         }
-
     }
+
+    private Card getShuffledCard(List<Card> cards) {
+        Card card = cards.get(cardIndex);
+        cardIndex ++;
+        return card;
+    }
+
 
     private List<Card> shuffledCard() {
         List<Card> testCards = CardFactory.create();
