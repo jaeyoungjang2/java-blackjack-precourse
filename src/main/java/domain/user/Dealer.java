@@ -18,4 +18,13 @@ public class Dealer {
     }
 
     // TODO 추가 기능 구현
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    @Override
+    public String toString() {
+        return "딜러";
+    }
 }

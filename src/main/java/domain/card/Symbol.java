@@ -24,4 +24,9 @@ public enum Symbol {
     public int getScore() {
         return score;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(score);
+    }
 }

@@ -22,6 +22,14 @@ public class Player {
         cards.add(card);
     }
 
+    public String name() {
+        return name;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
     // TODO 추가 기능 구현
 
 }
